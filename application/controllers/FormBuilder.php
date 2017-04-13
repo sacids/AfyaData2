@@ -21,4 +21,14 @@ class FormBuilder extends CI_Controller
 		$this->load->view("formbuilder/form_builder", $data);
 		$this->load->view("layout/footer");
 	}
+
+	public function save()
+	{
+		echo json_encode(["status" => "success"]);
+	}
+
+	public function update()
+	{
+
+	}
 }

@@ -22,6 +22,7 @@
 	<!-- Bootstrap Core CSS -->
 	<link href="<?= base_url() ?>assets/css/bootstrap.min.css" rel="stylesheet">
 	<link href="<?= base_url() ?>assets/css/font-awesome.min.css" rel="stylesheet">
+	<link href="<?= base_url() ?>assets/css/jquery-ui.min.css" rel="stylesheet">
 
 	<!-- Custom CSS -->
 	<link href="<?= base_url() ?>assets/css/afyadata.css" rel="stylesheet">

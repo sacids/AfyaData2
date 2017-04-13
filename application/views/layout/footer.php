@@ -21,8 +21,9 @@
 <!-- /.container -->
 <!-- jQuery -->
 <script src="<?= base_url() ?>assets/js/jquery.min.js"></script>
+<script src="<?= base_url() ?>assets/js/jquery-ui.min.js"></script>
 <!-- Bootstrap Core JavaScript -->
 <script src="<?= base_url() ?>assets/js/bootstrap.min.js"></script>
-<script src="<?= base_url() ?>assets/js/wezeshasasa.js"></script>
+<script src="<?= base_url() ?>assets/js/afyadata.js"></script>
 </body>
 </html>

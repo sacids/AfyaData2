@@ -1,5 +1,6 @@
 
 .formbuilder{
-    overflow-y: scroll;
-    max-height: 600px;
+    /*overflow-y: scroll;
+    max-height: 600px;*/
+    min-height: 400px;
 }
