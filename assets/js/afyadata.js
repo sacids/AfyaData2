@@ -15,7 +15,8 @@ $(document).ready(function () {
         helper: 'clone'
     });
 
-    $('#formQuestionsBuilder, .formbuilder .formGroup').droppable({
+    $('#formQuestionsBuilder, .formGroup').droppable({
+        //tolerance: 'touch',
         drop: function (event, ui) {
 
             InputFieldType = {
@@ -33,6 +34,10 @@ $(document).ready(function () {
                 BARCODE: 'barcode',
                 GROUP: 'group',
             }
+            var isSortEvent = false;
+
+            if ($(ui.draggable).hasClass('inputField'))
+                isSortEvent = true;
 
             var droppableArea = $(this).attr('id');
 
@@ -47,16 +52,20 @@ $(document).ready(function () {
 
             switch (inputType) {
                 case InputFieldType.TEXT:
-                    inputField = '<input type="text"  id="' + inputType + '" class="inputField form-control" placeholder="Text"/><br/>';
+                    inputField = '<div id="' + inputType + '"   class="inputField alert alert-success"><input type="text"  ' +
+                        'id="' + inputType + '" class="inputField form-control" placeholder="Text"/></div>';
                     break;
                 case InputFieldType.NUMERIC:
-                    inputField = '<input type="number"  id="' + inputType + '"  class="inputField form-control" placeholder="Numeric"/><br/>';
+                    inputField = '<div id="' + inputType + '"   class="inputField alert alert-success"><input type="number"  ' +
+                        'id="' + inputType + '"  class="inputField form-control" placeholder="Numeric"/></div>';
                     break;
                 case InputFieldType.PHONE:
-                    inputField = '<input type="number"  id="' + inputType + '"   class="inputField form-control" placeholder="Phone"/><br/>';
+                    inputField = '<div id="' + inputType + '"   class="inputField alert alert-success"><input type="number"  ' +
+                        'id="' + inputType + '"   class="inputField form-control" placeholder="Phone"/></div>';
                     break;
                 case InputFieldType.TEXTAREA:
-                    inputField = '<textarea id="' + inputType + '"  class="inputField form-control" placeholder="TextArea"></textarea><br/>';
+                    inputField = '<div id="' + inputType + '"   class="inputField alert alert-success"><textarea ' +
+                        'id="' + inputType + '"  class="inputField form-control" placeholder="TextArea"></textarea></div>';
                     break;
                 case InputFieldType.DROPDOWN:
 
@@ -75,16 +84,18 @@ $(document).ready(function () {
                     break;
                     break;
                 case InputFieldType.DATE:
-                    inputField = '<input type="date"  id="' + inputType + '"   class="inputField form-control" placeholder="Date"/><br/>';
+                    inputField = '<div id="' + inputType + '"   class="inputField alert alert-success"><input type="date" ' +
+                        ' id="' + inputType + '"   class="inputField form-control" placeholder="Date"/></div>';
                     break;
                 case InputFieldType.TIME:
-                    inputField = '<input type="time"  id="' + inputType + '"   class="inputField form-control" placeholder="Time"/><br/>';
+                    inputField = '<div id="' + inputType + '"   class="inputField alert alert-success"><input type="time" ' +
+                        ' id="' + inputType + '"   class="inputField form-control" placeholder="Time"/></div>';
                     break;
                 case InputFieldType.GROUP:
                     inputField = '<div  id="' + inputType + '"   class="inputField formGroup alert alert-success"><i class="fa fa-align-justify"></i> Group</div>';
                     break;
                 case InputFieldType.BARCODE:
-                    inputField = '<div  id="' + inputType + '"   class="inputField formGroup alert alert-success"><i class="fa fa-barcode"></i> Barcode</div>';
+                    inputField = '<div  id="' + inputType + '"   class="inputField  alert alert-success"><i class="fa fa-barcode"></i> Barcode</div>';
                     break;
             }
             console.log("added input of type " + inputType);
@@ -101,11 +112,26 @@ $(document).ready(function () {
                 },
                 'success': function (data) {
                     // Check if json was saved to database
-                    if (inputField != null) {
+
+
+                    if (inputField != null && !isSortEvent) {
                         $('#' + droppableArea).append(inputField);
                     }
+
+                    /*if (inputType == InputFieldType.GROUP) {
+                     $('div.formGroup').droppable({
+                     drop: function (event, ui) {
+                     var droppableAreaGroup = $(this).class('formGroup');
+                     droppableAreaGroup
+                     $('div.' + droppableAreaGroup).append(inputField);
+                     }
+                     });
+                     }*/
+
+                    $(this).css('min-height', 'auto');
                 }
             });
+            $('div#' + droppableArea).sortable();
         }
     });
 });

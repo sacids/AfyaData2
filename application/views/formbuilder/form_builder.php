@@ -53,7 +53,7 @@
                             <a href="" id="group" class="qnType"><i class="fa fa-align-justify fa-2x "></i> Group</a>
                         </li>
                         <li class="list-group-item">
-                            <a href="" id="textarea" class="qnType"><i class="fa fa-text-width fa-2x"></i> Text</a>
+                            <a href="" id="textarea" class="qnType"><i class="fa fa-text-width fa-2x"></i> TextArea</a>
                         </li>
                     </ul>
                 </div>
