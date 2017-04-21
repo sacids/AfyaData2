@@ -9,6 +9,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 class Migration_Update_access extends CI_Migration
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->dbforge();
+    }
+
     public function up()
     {
         //add column sms_code
@@ -23,9 +29,7 @@ class Migration_Update_access extends CI_Migration
         //modify column table_id in access_group table
         $group_table_id_field = array(
             'table_id' => array(
-                'name' => 'filter',
-                'type' => 'VARCHAR',
-                'constraint' => 50
+                'name' => 'filter'
             ),
         );
         $this->dbforge->modify_column('access_group', $group_table_id_field);
@@ -33,18 +37,19 @@ class Migration_Update_access extends CI_Migration
         //modify column table_id in access_user table
         $user_table_id_field = array(
             'table_id' => array(
-                'name' => 'filter',
-                'type' => 'VARCHAR',
-                'constraint' => 50
+                'name' => 'filter'
             ),
         );
         $this->dbforge->modify_column('access_user', $user_table_id_field);
+
     }
 
     function down()
     {
+        //drop columns
         $this->dbforge->drop_column("access_group", "function_id");
         $this->dbforge->drop_column("access_group", "slug");
+
         $this->dbforge->drop_column("access_user", "function_id");
         $this->dbforge->drop_column("access_user", "slug");
     }
